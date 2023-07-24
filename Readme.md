@@ -22,3 +22,9 @@ To build this project now you just need to:
 
 `skaffold dev`.
 
+# Secret 
+
+You would probably need to define a secret (for the JWT) on your Kubernetes by using 
+
+`kubectl create secret generic jwt-secret --from-literal=JWT_KEY=yoursecret`
+

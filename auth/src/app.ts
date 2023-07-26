@@ -16,7 +16,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false, // no encryption, JWT is already
-    secure: true // need https connection
+    secure: process.env.NODE_ENV !== 'test' // need https connection, test is not https
   })
 )
 

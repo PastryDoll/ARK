@@ -3,8 +3,7 @@ import { body } from 'express-validator';
 
 import { Password } from '../services/password';
 import { User } from '../models/user';
-import { validateRequest } from '../middlewares/validate-request';
-import { BadRequestError } from '../errors/bas-request-error';
+import { validateRequest,BadRequestError } from 'ark-commons';
 
 import jwt from 'jsonwebtoken';
 

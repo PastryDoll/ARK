@@ -12,11 +12,15 @@ To build this project now you just need to:
 
 2) Run `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml` for using the nginx ingress
 
-3) Run `npm install` inside the auth folder.
+4)You would probably need to define a secret (for the JWT) on your Kubernetes by using 
 
-4) Build the docker image on /auth with:
+`kubectl create secret generic jwt-secret --from-literal=JWT_KEY=yoursecret`
 
-`docker build -t caio/auth`.
+3) Run `npm install` inside the auth & client folder.
+
+4) Build the docker image on /auth & /client with:
+
+`docker build -t caio/auth`. (also for client)
 
 5) Run
 
@@ -24,7 +28,5 @@ To build this project now you just need to:
 
 # Secret 
 
-You would probably need to define a secret (for the JWT) on your Kubernetes by using 
 
-`kubectl create secret generic jwt-secret --from-literal=JWT_KEY=yoursecret`
 

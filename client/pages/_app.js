@@ -3,8 +3,6 @@ import buildClient from '../api/build-client';
 import Header from '../components/header';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
-    // console.log(pageProps)
-    // console.log(currentUser)
   return (
     <div>
       <Header currentUser={currentUser} />
@@ -22,8 +20,6 @@ AppComponent.getInitialProps = async appContext => {
     if (appContext.Component.getInitialProps) {
       pageProps = await appContext.Component.getInitialProps(appContext.ctx);
     }
-    console.log(data)
-  
     return {
       pageProps,
       ...data

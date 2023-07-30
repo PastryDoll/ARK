@@ -1,10 +1,12 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { response } from 'express';
+import mongoose from 'mongoose';
 
 it('returns a 404 if the ticked is not found', async () => {
+    const id = new mongoose.Types.ObjectId().toHexString();
     await request(app)
-    .get('api/tickets/"$gt": ""')
+    .get(`api/tickets/${id}`)
     .send()
     .expect(404);
     //{"$gt": ""}
@@ -21,6 +23,7 @@ it('return the ticket if the ticket is found', async () => {
         title,price
     })
     .expect(201);
+
 
     const ticketResponse = await request(app)
         .get(`/api/tickets/${response.body.id}`)

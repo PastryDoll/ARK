@@ -25,7 +25,7 @@ interface TicketDoc extends mongoose.Document {
     userId: string;
 }
 
-const userSchema = new mongoose.Schema({
+const ticketSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -52,10 +52,10 @@ const userSchema = new mongoose.Schema({
 
 
 // Important so that TypeScript can do type checking on User
-userSchema.statics.build = (attrs: TicketAttrs) => {
+ticketSchema.statics.build = (attrs: TicketAttrs) => {
     return new Ticket(attrs);
 }
 
-const Ticket = mongoose.model<TicketDoc,TicketModel>('User', userSchema);
+const Ticket = mongoose.model<TicketDoc,TicketModel>('Ticket', ticketSchema);
 
 export { Ticket };

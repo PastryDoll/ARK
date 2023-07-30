@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zero-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zero
+  template:
+    metadata:
+      labels:
+        app: zero
+    spec:
+      containers:
+        - name: zero
+          image: caio/zero
+          env: 
+            - name: MONGO_URI
+              value: 'mongodb://zero-mongo-srv:27017/zero'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zero-srv
+spec:
+  selector:
+    app: zero
+  ports:
+    - name: zero
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

@@ -1,3 +1,5 @@
+### WORKING IN PROGRES...
+
 ## ARK
 
 This is my first TS project. ARK is a website where people can sell their art. 
